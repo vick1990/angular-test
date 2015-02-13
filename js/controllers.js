@@ -44,7 +44,7 @@ var testApp = angular.module('testApp', []);
 testApp.controller('testApp', ['$scope', '$http', function($scope, $http) {
 	$http.get('json/movies.json').success(function(data) {
 		$scope.movies = data;
+		$scope.movies = data.splice(0, 5);
 	});
 	$scope.orderProp = 'year';
-	$scope.movies = data.splice(0, 5);
 }]);
