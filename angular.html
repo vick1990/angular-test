@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp" ng-controller="movieTestController">
+<head>
+	<meta charset="UTF-8">
+	<title ng-bind-template="Movie you are searching: {{query}}">Angular</title>
+	<link rel="stylesheet" href="estilo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="test/scenarios.js"></script>
+</head>
+<body>
+	<div id="container">
+		<h1>Movies</h1>
+		<h2>{{orderProp}}</h2>
+		<div>
+			<div>
+				Search: <input ng-model="query">
+				Sort by:
+				<select ng-model="orderProp">
+					<option value="name">Alphabetical</option>
+					<option value="year">Newest</option>
+				</select>
+			</div>
+			<div>
+				<p>{{query}}</p>
+			</div>
+		</div>
+		<div>
+			<ul class="movies">
+				<h3> Total number of movies: {{movies.length}}</h3>
+				<li ng-repeat="movie in movies | filter:query | orderBy:orderProp">
+					<p>{{movie.name}}</p>
+					<p>{{movie.year}}</p>
+				</li>
+			</ul>
+		</div>
+		<p ng="name in names">Hello, {{name}}</p>
+		<table>
+			<tr>
+				<th></th>
+			</tr>
+			<tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]">
+				<td ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]">{{i+1}}</td>
+			</tr>
+		</table>
+		<pre>{{movies | filter:query | orderBy:orderProp | json}}</pre>
+	</div>
+</body>
+</html>
